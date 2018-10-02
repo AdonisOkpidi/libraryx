@@ -33,6 +33,14 @@ class BookController < ApplicationController
     end
 
     def update
+        @book = Book.find(params[:id])
+	
+        if @book.update_attributes(book_param)
+            redirect_to :action => 'show', :id => @book
+        else
+            @subjects = Subject.all
+            render :action => 'edit'
+        end
     end
 
     def delete
