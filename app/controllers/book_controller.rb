@@ -44,5 +44,7 @@ class BookController < ApplicationController
     end
 
     def delete
+        Book.find(params[:id]).destroy
+        redirect_to :action => 'list'
     end
 end
