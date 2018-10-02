@@ -13,6 +13,18 @@ class BookController < ApplicationController
     end
 
     def create
+        @book = Book.new(book_params)
+	
+        if @book.save
+           redirect_to :action => 'list'
+        else
+           @subjects = Subject.all
+           render :action => 'new'
+        end
+    end
+
+    def book_params
+        params.require(:books).permit(:title, :price, :subject_id, :description)
     end
 
     def edit
