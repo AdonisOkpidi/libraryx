@@ -28,6 +28,8 @@ class BookController < ApplicationController
     end
 
     def edit
+        @book = Book.find(params[:id])
+        @subjects = Subject.all
     end
 
     def update
