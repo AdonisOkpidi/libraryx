@@ -42,6 +42,10 @@ class BookController < ApplicationController
             render :action => 'edit'
         end
     end
+    
+    def book_param
+        params.require(:book).permit(:title, :price, :subject_id, :description)
+    end
 
     def delete
         Book.find(params[:id]).destroy
